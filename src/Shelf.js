@@ -13,12 +13,12 @@ class shelf extends Component {
                 <div className="bookshelf-books">
                     <ol className="books-grid">
 
-                        <li>
+                        {this.props.shelfFilter.map(book => (
 
-                            <Book />
-
-                        </li>
-
+                            <li key={book.id}>
+                                <Book book={book} />
+                            </li>
+                        ))}
                     </ol>
                 </div>
             </div>

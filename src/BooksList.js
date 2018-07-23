@@ -6,8 +6,10 @@ import Shelf from './Shelf'
 
 
 class BooksSearch extends Component {
+
     render() {
         return (
+
             <div className="list-books">
 
                 <Header title='MyReads' />
@@ -18,19 +20,21 @@ class BooksSearch extends Component {
                         <Shelf
 
                             title="Currently Reading"
+                            shelfFilter={this.props.books.filter(book => book.shelf === "currentlyReading")}
 
                         />
-
 
                         <Shelf
 
                             title="Want to Read"
+                            shelfFilter={this.props.books.filter(book => book.shelf === "wantToRead")}
 
                         />
 
                         <Shelf
 
                             title="Read"
+                            shelfFilter={this.props.books.filter(book => book.shelf === "read")}
 
                         />
 
