@@ -6,17 +6,23 @@ class shelf extends Component {
 
     render() {
 
+        const { title, changeShelf } = this.props
+
         return (
 
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{this.props.title}</h2>
+                <h2 className="bookshelf-title">{title}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
 
                         {this.props.shelfFilter.map(book => (
 
                             <li key={book.id}>
-                                <Book book={book} />
+                                <Book
+                                    book={book}
+                                    changeShelf={changeShelf}
+                                   
+                                />
                             </li>
                         ))}
                     </ol>

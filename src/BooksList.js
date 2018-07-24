@@ -8,6 +8,9 @@ import Shelf from './Shelf'
 class BooksSearch extends Component {
 
     render() {
+
+        const { books, changeShelf } = this.props
+
         return (
 
             <div className="list-books">
@@ -20,21 +23,24 @@ class BooksSearch extends Component {
                         <Shelf
 
                             title="Currently Reading"
-                            shelfFilter={this.props.books.filter(book => book.shelf === "currentlyReading")}
+                            shelfFilter={books.filter(book => book.shelf === "currentlyReading")}
+                            changeShelf={changeShelf}
 
                         />
 
                         <Shelf
 
                             title="Want to Read"
-                            shelfFilter={this.props.books.filter(book => book.shelf === "wantToRead")}
+                            shelfFilter={books.filter(book => book.shelf === "wantToRead")}
+                            changeShelf={changeShelf}
 
                         />
 
                         <Shelf
 
                             title="Read"
-                            shelfFilter={this.props.books.filter(book => book.shelf === "read")}
+                            shelfFilter={books.filter(book => book.shelf === "read")}
+                            changeShelf={changeShelf}
 
                         />
 
