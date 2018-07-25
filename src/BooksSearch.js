@@ -6,14 +6,19 @@ class BooksSearch extends Component {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <Link 
-                            className="close-search" 
-                            to='/'>
-                            Close
+                    <Link
+                        className="close-search"
+                        to='/'>
+                        Close
                     </Link>
                     <div className="search-books-input-wrapper">
-                        
-                        <input type="text" placeholder="Search by title or author" />
+
+                        <input
+                            type="text"
+                            placeholder="Search by title or author"
+                            value={this.props.query}
+                            onChange={(e) => this.props.updateQuery(e.target.value)}
+                        />
 
                     </div>
                 </div>

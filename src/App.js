@@ -14,6 +14,7 @@ class BooksApp extends React.Component {
   state = {
 
     books: [],
+    query: '',
 
   }
 
@@ -31,6 +32,8 @@ class BooksApp extends React.Component {
     this.getAllBooks()
 
   }
+
+  updateQuery = (query) => this.setState({ query })
 
 
   render() {
@@ -50,7 +53,12 @@ class BooksApp extends React.Component {
 
         <Route path='/search' render={() => (
 
-          <BooksSearch />
+          <BooksSearch
+
+            query={this.state.query}
+            updateQuery={this.updateQuery}
+
+          />
 
         )} />
 
