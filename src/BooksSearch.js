@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Book from './Book';
 
 class BooksSearch extends Component {
     render() {
+
+        const { output, query, updateQuery, changeShelf } = this.props
+
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -16,14 +20,34 @@ class BooksSearch extends Component {
                         <input
                             type="text"
                             placeholder="Search by title or author"
-                            value={this.props.query}
-                            onChange={(e) => this.props.updateQuery(e.target.value)}
+                            value={query}
+                            onChange={(e) => updateQuery(e.target.value)}
                         />
 
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <ol className="books-grid"></ol>
+                    <ol className="books-grid">
+
+                        {
+                            !output.error ?
+                                output.map(output => (
+
+
+                                    <li key={output.id}>
+
+                                        <Book
+                                            book={output}
+                                            changeShelf={changeShelf}
+                                            
+                                        />
+
+                                    </li>
+                                )) : <h1>Not Found</h1>
+
+                        }
+                    </ol>
+
                 </div>
             </div>
         )

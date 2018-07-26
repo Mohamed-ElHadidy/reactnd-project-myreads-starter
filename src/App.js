@@ -15,6 +15,7 @@ class BooksApp extends React.Component {
 
     books: [],
     query: '',
+    searchRes: [],
 
   }
 
@@ -33,8 +34,28 @@ class BooksApp extends React.Component {
 
   }
 
-  updateQuery = (query) => this.setState({ query })
+  updateQuery = (query) => {
 
+    this.setState({ query })
+
+    this.searchOutput(query)
+
+  }
+
+  searchOutput = (query) => {
+    if (query !== "") {
+
+      BooksAPI.search(query).then((searchRes) => {
+        this.setState({ searchRes })
+
+        console.log(searchRes);
+      })
+
+    } else {
+      this.setState({ searchRes: [] })
+    }
+
+  }
 
   render() {
     return (
@@ -57,6 +78,8 @@ class BooksApp extends React.Component {
 
             query={this.state.query}
             updateQuery={this.updateQuery}
+            output={this.state.searchRes}
+            changeShelf={this.changeShelf}
 
           />
 
