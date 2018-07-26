@@ -21,27 +21,21 @@ class BooksSearch extends Component {
                     <div>
 
                         <Shelf
-
                             title="Currently Reading"
                             shelfFilter={books.filter(book => book.shelf === "currentlyReading")}
                             changeShelf={changeShelf}
-
                         />
 
                         <Shelf
-
                             title="Want to Read"
                             shelfFilter={books.filter(book => book.shelf === "wantToRead")}
                             changeShelf={changeShelf}
-
                         />
 
                         <Shelf
-
                             title="Read"
                             shelfFilter={books.filter(book => book.shelf === "read")}
                             changeShelf={changeShelf}
-
                         />
 
                         <div className="open-search">
@@ -52,11 +46,8 @@ class BooksSearch extends Component {
                             </Link>
 
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         )
     }

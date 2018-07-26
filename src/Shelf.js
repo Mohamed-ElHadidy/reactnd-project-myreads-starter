@@ -21,9 +21,9 @@ class shelf extends Component {
                                 <Book
                                     book={book}
                                     changeShelf={changeShelf}
-                                    
                                 />
                             </li>
+
                         ))}
                     </ol>
                 </div>

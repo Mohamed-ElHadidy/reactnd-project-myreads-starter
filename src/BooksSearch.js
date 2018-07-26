@@ -33,21 +33,16 @@ class BooksSearch extends Component {
                             !output.error ?
                                 output.map(output => (
 
-
                                     <li key={output.id}>
-
                                         <Book
                                             book={output}
                                             changeShelf={changeShelf}
-                                            
                                         />
-
                                     </li>
                                 )) : <h1>Not Found</h1>
-
                         }
-                    </ol>
 
+                    </ol>
                 </div>
             </div>
         )
