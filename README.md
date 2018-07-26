@@ -1,8 +1,6 @@
-# MyReads Project
+# MyReads Project [FEND 7th project]
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
-
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+ The MyReads project is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
 
 ## TL;DR
 
@@ -22,9 +20,13 @@ To get started developing right away:
 │   └── index.html # DO NOT MODIFY
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├── App.js # This is the root of  the app. Contains the state , methods that manage the app functionality.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BooksList.js # The app home page which consists of header, shelves and button which link to search page.
+    ├── Header.js # The first component which holdes the header bar. 
+    ├── Shelf.js # The main component of .which holdes each shelf of the three shelves [Currently Reading, Want to Read, Read].
+    ├── Book.js # This component holdes the template of each single book [ Image,  title, authors and shef changer select menu ]
+    ├── BooksSearch.js # This is the second page of the app which consists of an input form to search for books from the api and second part which holdes the list of books components which match the input value.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
