@@ -9,7 +9,6 @@ import BooksSearch from './BooksSearch'
 import BooksList from './BooksList'
 
 
-
 class BooksApp extends React.Component {
   state = {
 
@@ -37,7 +36,6 @@ class BooksApp extends React.Component {
   updateQuery = (query) => {
 
     this.setState({ query })
-
     this.searchOutput(query)
 
   }
@@ -46,9 +44,17 @@ class BooksApp extends React.Component {
     if (query !== "") {
 
       BooksAPI.search(query).then((searchRes) => {
+
+        searchRes.map(bookFromSearch =>
+          (this.state.books.map(bookFromShelf =>
+            bookFromShelf.id === bookFromSearch.id ?
+              bookFromSearch.shelf = bookFromShelf.shelf :
+              "")))
+
         this.setState({ searchRes })
 
         console.log(searchRes);
+
       })
 
     } else {
@@ -64,10 +70,8 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={() => (
 
           <BooksList
-
             books={this.state.books}
             changeShelf={this.changeShelf}
-
           />
 
         )} />
@@ -75,12 +79,10 @@ class BooksApp extends React.Component {
         <Route path='/search' render={() => (
 
           <BooksSearch
-
             query={this.state.query}
             updateQuery={this.updateQuery}
             output={this.state.searchRes}
             changeShelf={this.changeShelf}
-
           />
 
         )} />
