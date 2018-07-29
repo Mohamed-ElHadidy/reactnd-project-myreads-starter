@@ -5,7 +5,7 @@ import Book from './Book';
 class BooksSearch extends Component {
     render() {
 
-        const { output, query, updateQuery, changeShelf } = this.props
+        const { output, query, updateQuery, changeShelf, validSearch } = this.props
 
         return (
             <div className="search-books">
@@ -30,7 +30,7 @@ class BooksSearch extends Component {
                     <ol className="books-grid">
 
                         {
-                            !output.error ?
+                            validSearch ?
                                 output.map(output => (
 
                                     <li key={output.id}>
@@ -39,6 +39,7 @@ class BooksSearch extends Component {
                                             changeShelf={changeShelf}
                                         />
                                     </li>
+
                                 )) : <h1>Not Found</h1>
                         }
 

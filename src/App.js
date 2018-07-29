@@ -15,6 +15,7 @@ class BooksApp extends React.Component {
     books: [],
     query: '',
     searchRes: [],
+    validSearch: true,
 
   }
 
@@ -41,26 +42,37 @@ class BooksApp extends React.Component {
   }
 
   searchOutput = (query) => {
-    if (query !== "") {
+    if (query) {
 
       BooksAPI.search(query).then((searchRes) => {
+        console.log(searchRes)
 
-        searchRes.map(bookFromSearch =>
-          (this.state.books.map(bookFromShelf =>
-            bookFromShelf.id === bookFromSearch.id ?
-              bookFromSearch.shelf = bookFromShelf.shelf :
-              "")))
+        if (searchRes.error) {
+          this.setState({
+            searchRes: [],
+            validSearch: false
+          })
 
-        this.setState({ searchRes })
+        } else {
+          searchRes.map(bookFromSearch =>
+            (this.state.books.map(bookFromShelf =>
+              bookFromShelf.id === bookFromSearch.id ?
+                bookFromSearch.shelf = bookFromShelf.shelf :
+                "")))
 
-        console.log(searchRes);
-
+          this.setState({
+            searchRes: searchRes,
+            validSearch: true
+          })
+        }
       })
 
     } else {
-      this.setState({ searchRes: [] })
+      this.setState({
+        searchRes: [],
+        validSearch: true
+      })
     }
-
   }
 
   render() {
@@ -83,6 +95,7 @@ class BooksApp extends React.Component {
             updateQuery={this.updateQuery}
             output={this.state.searchRes}
             changeShelf={this.changeShelf}
+            validSearch={this.state.validSearch}
           />
 
         )} />
