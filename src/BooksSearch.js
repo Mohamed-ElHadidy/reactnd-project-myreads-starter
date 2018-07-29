@@ -1,53 +1,51 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Book from './Book';
 
-class BooksSearch extends Component {
-    render() {
+const BooksSearch = props => {
 
-        const { output, query, updateQuery, changeShelf, validSearch } = this.props
+    const { output, query, updateQuery, changeShelf, validSearch } = props
 
-        return (
-            <div className="search-books">
-                <div className="search-books-bar">
-                    <Link
-                        className="close-search"
-                        to='/'>
-                        Close
+    return (
+        <div className="search-books">
+            <div className="search-books-bar">
+                <Link
+                    className="close-search"
+                    to='/'>
+                    Close
                     </Link>
-                    <div className="search-books-input-wrapper">
+                <div className="search-books-input-wrapper">
 
-                        <input
-                            type="text"
-                            placeholder="Search by title or author"
-                            value={query}
-                            onChange={(e) => updateQuery(e.target.value)}
-                        />
+                    <input
+                        type="text"
+                        placeholder="Search by title or author"
+                        value={query}
+                        onChange={(e) => updateQuery(e.target.value)}
+                    />
 
-                    </div>
-                </div>
-                <div className="search-books-results">
-                    <ol className="books-grid">
-
-                        {
-                            validSearch ?
-                                output.map(output => (
-
-                                    <li key={output.id}>
-                                        <Book
-                                            book={output}
-                                            changeShelf={changeShelf}
-                                        />
-                                    </li>
-
-                                )) : <h1>Not Found</h1>
-                        }
-
-                    </ol>
                 </div>
             </div>
-        )
-    }
+            <div className="search-books-results">
+                <ol className="books-grid">
+
+                    {
+                        validSearch ?
+                            output.map(output => (
+
+                                <li key={output.id}>
+                                    <Book
+                                        book={output}
+                                        changeShelf={changeShelf}
+                                    />
+                                </li>
+
+                            )) : <h1>Not Found</h1>
+                    }
+
+                </ol>
+            </div>
+        </div>
+    )
 }
 
 
