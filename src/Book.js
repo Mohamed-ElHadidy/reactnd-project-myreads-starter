@@ -40,7 +40,7 @@ const Book = ({ book, changeShelf }) => {
             </div>
 
             <div className="book-title">{title}</div>
-            <div className="book-authors">{authors.join(', ')}</div>
+            <div className="book-authors">{authors ? authors.join(', ') : "No authors info" }</div>
 
         </div>
     )
