@@ -10,6 +10,17 @@ class BooksSearch extends Component {
     render() {
 
         const { books, changeShelf } = this.props
+        const shelves = ["currentlyReading", "wantToRead", "read"]
+        const title = shelf => {
+            switch (shelf) {
+                case "currentlyReading":
+                    return "Currently Reading"
+                case "wantToRead":
+                    return "Want to Read"
+                default:
+                    return "Read"
+            }
+        }
 
         return (
 
@@ -20,23 +31,16 @@ class BooksSearch extends Component {
                 <div className="list-books-content">
                     <div>
 
-                        <Shelf
-                            title="Currently Reading"
-                            shelfFilter={books.filter(book => book.shelf === "currentlyReading")}
-                            changeShelf={changeShelf}
-                        />
-
-                        <Shelf
-                            title="Want to Read"
-                            shelfFilter={books.filter(book => book.shelf === "wantToRead")}
-                            changeShelf={changeShelf}
-                        />
-
-                        <Shelf
-                            title="Read"
-                            shelfFilter={books.filter(book => book.shelf === "read")}
-                            changeShelf={changeShelf}
-                        />
+                        {
+                            shelves.map(shelf => (
+                                <Shelf
+                                    key={shelf}
+                                    title={title(shelf)}
+                                    shelfFilter={books.filter(book => book.shelf === shelf)}
+                                    changeShelf={changeShelf}
+                                />
+                            ))
+                        }
 
                         <div className="open-search">
 
